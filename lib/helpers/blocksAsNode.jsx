@@ -12,7 +12,7 @@ import toIdHash from './toIdHash'
 function blocksAsNode (blocksArray) {
   const hash = toIdHash(blocksArray)
   const doneHash = {}
-  const result = new BlockNode('$$root')
+  const result = new BlockNode('root')
   const apply = (block) => {
     const {content, id, index, parent: parentId} = block
     if (doneHash[id]) {

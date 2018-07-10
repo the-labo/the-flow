@@ -108,6 +108,11 @@ Components
 
 GUI Flow
 
+**Props**
+
+| Name | Type | Description | Default |
+| --- | --- | ---- | ---- |
+| `blocks` | arrayOf object |  | `[]` |
 
 ### TheFlowStyle
 

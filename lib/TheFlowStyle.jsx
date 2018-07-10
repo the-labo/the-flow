@@ -38,6 +38,7 @@ TheFlowStyle.data = (options) => {
       right: 0,
       top: 0,
       width: '100%',
+      zIndex: 0,
     },
     '.the-flow-inner': {
       height: 'fit-content',
@@ -47,8 +48,10 @@ TheFlowStyle.data = (options) => {
     },
     '.the-flow-node': {
       alignItems: 'center',
+      boxSizing: 'border-box',
       display: 'flex',
       flexDirection: 'column',
+      zIndex: 2,
     },
     '.the-flow-node-root': {
       '.the-flow-node-root-content': {
@@ -65,9 +68,10 @@ TheFlowStyle.data = (options) => {
       background: 'white',
       border: '1px solid #CCC',
       borderRadius: '4px',
+      boxSizing: 'border-box',
       display: 'block',
       fontSize: 'smaller',
-      margin: '8px',
+      margin: '16px',
       padding: '4px 8px',
     },
     '&': {

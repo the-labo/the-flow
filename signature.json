@@ -11,7 +11,7 @@
         ],
         "params": [
           {
-            "name": "{node, root = false}",
+            "name": "{node, parentDOMId, prefix, root = false}",
             "type": null
           }
         ],
@@ -26,6 +26,13 @@
       },
       {
         "name": "resize",
+        "docblock": null,
+        "modifiers": [],
+        "params": [],
+        "returns": null
+      },
+      {
+        "name": "resizeCanvas",
         "docblock": null,
         "modifiers": [],
         "params": [],
