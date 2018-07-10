@@ -1,0 +1,25 @@
+{
+  "TheFlow": {
+    "description": "GUI Flow",
+    "displayName": "TheFlow",
+    "methods": []
+  },
+  "TheFlowStyle": {
+    "description": "Style for TheFlow",
+    "displayName": "TheFlowStyle",
+    "methods": [],
+    "props": {
+      "options": {
+        "type": {
+          "name": "object"
+        },
+        "required": false,
+        "description": "Style options",
+        "defaultValue": {
+          "value": "{}",
+          "computed": false
+        }
+      }
+    }
+  }
+}
