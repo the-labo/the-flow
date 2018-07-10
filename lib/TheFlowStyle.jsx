@@ -30,8 +30,19 @@ TheFlowStyle.data = (options) => {
     dominantColor = ThemeValues.dominantColor,
   } = options
   return asStyleData('.the-flow', {
+    '.the-flow-canvas': {
+      bottom: 0,
+      height: '100%',
+      left: 0,
+      position: 'absolute',
+      right: 0,
+      top: 0,
+      width: '100%',
+    },
     '.the-flow-inner': {
       height: 'fit-content',
+      margin: '0 auto',
+      position: 'relative',
       width: 'fit-content',
     },
     '.the-flow-node': {
