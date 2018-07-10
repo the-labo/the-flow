@@ -2,7 +2,52 @@
   "TheFlow": {
     "description": "GUI Flow",
     "displayName": "TheFlow",
-    "methods": []
+    "methods": [
+      {
+        "name": "BlockNode",
+        "docblock": null,
+        "modifiers": [
+          "static"
+        ],
+        "params": [
+          {
+            "name": "{node, root = false}",
+            "type": null
+          }
+        ],
+        "returns": null
+      },
+      {
+        "name": "drawCanvas",
+        "docblock": null,
+        "modifiers": [],
+        "params": [],
+        "returns": null
+      },
+      {
+        "name": "resize",
+        "docblock": null,
+        "modifiers": [],
+        "params": [],
+        "returns": null
+      }
+    ],
+    "props": {
+      "blocks": {
+        "type": {
+          "name": "arrayOf",
+          "value": {
+            "name": "object"
+          }
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "[]",
+          "computed": false
+        }
+      }
+    }
   },
   "TheFlowStyle": {
     "description": "Style for TheFlow",
