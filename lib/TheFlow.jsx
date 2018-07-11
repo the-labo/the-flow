@@ -77,6 +77,7 @@ class TheFlow extends React.Component {
     const ctx = canvasElm.getContext('2d')
     ctx.scale(2, 2)
     ctx.lineWidth = 2
+    ctx.clearRect(0, 0, canvasElm.offsetWidth, canvasElm.offsetHeight)
     const nodes = elm.querySelectorAll('.the-flow-node')
     for (const node of nodes) {
       const parentNode = elm.querySelector(node.dataset.parent)

@@ -112,6 +112,7 @@ GUI Flow
 
 | Name | Type | Description | Default |
 | --- | --- | ---- | ---- |
+| `arrowColor` | string  |  | `'#555'` |
 | `blocks` | arrayOf object |  | `[]` |
 
 ### TheFlowStyle
