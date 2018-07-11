@@ -25,6 +25,22 @@
         "returns": null
       },
       {
+        "name": "drawJoinerArrow",
+        "docblock": null,
+        "modifiers": [],
+        "params": [
+          {
+            "name": "ctx",
+            "type": null
+          },
+          {
+            "name": "{from, to}",
+            "type": null
+          }
+        ],
+        "returns": null
+      },
+      {
         "name": "resize",
         "docblock": null,
         "modifiers": [],
@@ -40,6 +56,17 @@
       }
     ],
     "props": {
+      "arrowColor": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "'#555'",
+          "computed": false
+        }
+      },
       "blocks": {
         "type": {
           "name": "arrayOf",
