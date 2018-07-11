@@ -6,17 +6,8 @@ import React from 'react'
 import { eventHandlersFor, htmlAttributesFor, newId } from 'the-component-util'
 import { get } from 'the-window'
 import blocksAsNode from './helpers/blocksAsNode'
+import positioner from './helpers/positioner'
 import TheFlowStyle from './TheFlowStyle'
-
-const centerOfElm = (elm) => {
-  if (!elm) {
-    return null
-  }
-  return {
-    x: elm.offsetLeft + (elm.offsetWidth / 2),
-    y: elm.offsetTop + (elm.offsetHeight / 2),
-  }
-}
 
 /**
  * GUI Flow
@@ -86,7 +77,6 @@ class TheFlow extends React.Component {
     const ctx = canvasElm.getContext('2d')
     ctx.scale(2, 2)
     ctx.lineWidth = 2
-    ctx.strokeStyle = '#333333' // TODO
     const nodes = elm.querySelectorAll('.the-flow-node')
     for (const node of nodes) {
       const parentNode = elm.querySelector(node.dataset.parent)
@@ -95,13 +85,45 @@ class TheFlow extends React.Component {
       }
       const content = node.querySelector(`#${node.id}-content`)
       const parentContent = parentNode.querySelector(`#${parentNode.id}-content`)
-      const from = centerOfElm(content)
-      const to = centerOfElm(parentContent)
+      this.drawJoinerArrow(
+        ctx,
+        {
+          from: positioner.bottomCenterOfElm(parentContent),
+          to: positioner.topCenterOfElm(content),
+        }
+      )
+    }
+  }
+
+  drawJoinerArrow (ctx, {from, to}) {
+    const midY = (from.y + to.y) / 2
+    ctx.save()
+    ctx.strokeStyle = this.props.arrowColor
+    ctx.fillStyle = this.props.arrowColor
+    ctx.lineCap = 'round'
+    // Joiner line
+    {
+      ctx.beginPath()
       ctx.moveTo(from.x, from.y)
-      ctx.lineTo(to.x, to.y)
+      ctx.lineTo(from.x, midY)
+      ctx.lineTo(to.x, midY)
+      ctx.lineTo(to.x, to.y - 2)
       ctx.stroke()
       ctx.closePath()
     }
+    // Arrow head
+    {
+      const w = 12
+      const h = 12
+      ctx.beginPath()
+      ctx.moveTo(to.x, to.y)
+      ctx.lineTo(to.x - w / 2, to.y - h / 2)
+      ctx.lineTo(to.x + w / 2, to.y - h / 2)
+      ctx.lineTo(to.x, to.y)
+      ctx.fill()
+      ctx.closePath()
+    }
+    ctx.restore()
   }
 
   render () {
@@ -152,12 +174,14 @@ class TheFlow extends React.Component {
 TheFlow.Style = TheFlowStyle
 
 TheFlow.propTypes = {
+  arrowColor: PropTypes.string,
   blocks: PropTypes.arrayOf(
     PropTypes.object,
   ),
 }
 
 TheFlow.defaultProps = {
+  arrowColor: '#555',
   blocks: [],
 }
 
