@@ -17,10 +17,7 @@ describe('positioner', () => {
   })
 
   it('Render a component', () => {
-    let element = render(
-       <Positioner />
-    )
-    ok(element)
+    ok(positioner)
   })
 })
 
