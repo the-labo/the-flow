@@ -61,7 +61,7 @@ TheFlowStyle.data = (options) => {
       },
     },
     '.the-fow-node-children': {
-      alignItems: 'center',
+      alignItems: 'stretch',
       display: 'flex',
     },
     '.the-fow-node-content': {
