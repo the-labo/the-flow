@@ -29,7 +29,6 @@ class BlockNode {
         return child
       }
       const hitInChild = child.find(id)
-      console.log('hitInChild', hitInChild, id)
       if (hitInChild) {
         return hitInChild
       }

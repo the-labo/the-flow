@@ -48,6 +48,7 @@ class TheFlow extends React.Component {
     this.canvasElmRef = React.createRef()
     this.resize = this.resize.bind(this)
     this.id = props.id || newId({prefix: 'the-flow'})
+    this.redrawTimer = -1
   }
 
   componentDidMount () {
@@ -57,10 +58,11 @@ class TheFlow extends React.Component {
   }
 
   componentDidUpdate () {
-    this.drawCanvas()
+    this.redraw()
   }
 
   componentWillUnmount () {
+    clearTimeout(this.redrawTimer)
     const window = get('window')
     window.removeEventListener('resize', this.resize)
   }
@@ -127,6 +129,14 @@ class TheFlow extends React.Component {
     ctx.restore()
   }
 
+  redraw () {
+    clearTimeout(this.redrawTimer)
+    this.redrawTimer = setTimeout(() => {
+      this.syncCanvasSize()
+      this.drawCanvas()
+    }, 10)
+  }
+
   render () {
     const {props} = this
     const {
@@ -158,11 +168,10 @@ class TheFlow extends React.Component {
   }
 
   resize () {
-    this.resizeCanvas()
-    this.drawCanvas()
+    this.redraw()
   }
 
-  resizeCanvas () {
+  syncCanvasSize () {
     const canvasElm = this.canvasElmRef.current
     if (!canvasElm) {
       return null
