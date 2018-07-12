@@ -41,6 +41,13 @@
         "returns": null
       },
       {
+        "name": "redraw",
+        "docblock": null,
+        "modifiers": [],
+        "params": [],
+        "returns": null
+      },
+      {
         "name": "resize",
         "docblock": null,
         "modifiers": [],
@@ -48,7 +55,7 @@
         "returns": null
       },
       {
-        "name": "resizeCanvas",
+        "name": "syncCanvasSize",
         "docblock": null,
         "modifiers": [],
         "params": [],
