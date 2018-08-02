@@ -30,7 +30,8 @@ function blocksAsNode (blocksArray) {
 
     const parentNode = parentId ? result.find(parentId) : result
     if (!parentNode) {
-      throw new Error(`[TheFlow] Unknown parent: ${parentId}`)
+      console.warn(`[TheFlow] Unknown parent "${parentId}" for "${id}"`)
+      return
     }
     const node = new BlockNode(id, {
       content,
