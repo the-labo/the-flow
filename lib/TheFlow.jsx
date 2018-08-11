@@ -13,12 +13,13 @@ import TheFlowStyle from './TheFlowStyle'
  * GUI Flow
  */
 class TheFlow extends React.Component {
-  static BlockNode ({node, parentDOMId, prefix, root = false}) {
+  static BlockNode ({flowId, node, parentDOMId, prefix, root = false}) {
     const domID = `${prefix}-${node.id}`
     return (
       <div className={c('the-flow-node', {
         'the-flow-node-root': root,
       })}
+           data-flow-id={flowId}
            data-parent={parentDOMId ? `#${parentDOMId}` : null}
            id={domID}
       >
@@ -31,7 +32,8 @@ class TheFlow extends React.Component {
         </div>
         <div className='the-fow-node-children'>
           {node.children.map((node) => (
-            <TheFlow.BlockNode key={node.id}
+            <TheFlow.BlockNode flowId={flowId}
+                               key={node.id}
                                node={node}
                                parentDOMId={domID}
                                prefix={prefix}
@@ -80,7 +82,7 @@ class TheFlow extends React.Component {
     ctx.scale(2, 2)
     ctx.lineWidth = 2
     ctx.clearRect(0, 0, canvasElm.offsetWidth, canvasElm.offsetHeight)
-    const nodes = elm.querySelectorAll('.the-flow-node')
+    const nodes = elm.querySelectorAll(`.the-flow-node[data-flow-id="${this.id}"]`)
     for (const node of nodes) {
       const parentNode = elm.querySelector(node.dataset.parent)
       if (!parentNode) {
@@ -158,7 +160,8 @@ class TheFlow extends React.Component {
                   ref={this.canvasElmRef}
           />
           {children}
-          <TheFlow.BlockNode node={node}
+          <TheFlow.BlockNode flowId={this.id}
+                             node={node}
                              prefix={[this.id, 'node'].join('-')}
                              root
           />

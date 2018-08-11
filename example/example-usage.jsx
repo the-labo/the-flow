@@ -13,8 +13,17 @@ class ExampleComponent extends React.Component {
           {id: 2, parent: 1, index: 0, content: <span>This is child 01</span>},
           {id: 3, parent: 2, index: 0, content: <span>This is child01-01</span>},
           {id: 4, parent: 2, index: 1, content: <span>This is child01-02</span>},
-        ]}>
-        </TheFlow>
+          {
+            id: 5, parent: 4, index: 0, content: (
+              <TheFlow blocks={[
+                {id: 1, content: <span>This is inner root</span>},
+                {id: 2, parent: 1, index: 0, content: <span>Inner flow01</span>},
+                {id: 3, parent: 2, index: 0, content: <span>Inner flow01-01</span>},
+                {id: 4, parent: 2, index: 1, content: <span>Inner flow01-02</span>},
+              ]}/>
+            )
+          },
+        ]}/>
       </div>
 
     )
