@@ -1,10 +1,16 @@
+/**
+ * @function toIdHash
+ */
 'use strict'
 
+const isEmpty = (v) => typeof v === 'undefined' || v === null
+
+/** @lends toIdHash */
 function toIdHash (array) {
   const hash = {}
   for (const values of array) {
     const {id} = values
-    if (!id) {
+    if (isEmpty(id)) {
       throw new Error(`[TheFlow] id is missing: ${JSON.stringify(values)}`)
     }
     if (values[id]) {
